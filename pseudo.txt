@@ -1,0 +1,61 @@
+WHILE (MAT_A[4,1] < 0) OR (MAT_A[4,2] < 0) OR (MAT_A[4,3] < 0) THEN
+	
+	X = 0
+	A = MAT_A[4,1]
+	B = MAT_A[4,2]
+	C = MAT_A[4,3]
+	
+	IF A < B THEN
+		X = 1
+	ELSE THEN 
+		X = 2
+	END IF 
+	IF X == 1 THEN 
+		IF C < A THEN
+			X = 3
+			END IF 
+	ELSE THEN
+		IF C < B THEN
+			X = 3
+		END IF
+	END IF
+			
+	A = MAT_A[1, 7] / MAT_A[1, X]
+	B = MAT_A[2, 7] / MAT_A[2, X]
+	C = MAT_A[3, 7] / MAT_A[3, X]
+
+	Y = 0
+
+	IF A < B THEN
+		Y = 1
+	ELSE THEN 
+		Y = 2
+	END IF 
+	IF Y == 1 THEN 
+		IF C < A THEN
+			Y = 3
+		END IF
+	ELSE THEN
+		IF C < B THEN
+			Y = 3
+		END IF
+	END IF
+	
+	P = MAT_A[Y,X]
+
+	FOR I=1 to I=7
+		MAT_A[Y, I] / P -> MAT_A[Y, I]
+		
+	OUTPUT MAT_A
+	
+	FOR I = 1 to I = 4
+		IF I = Y THEN CONTINUE
+		Q = -MAT_A[I, X]
+		FOR J = 1 to J = 7
+			MAT_A[I, J] + Q * MAT_A[Y, J] -> MAT_A[I, J]
+		J++
+	I++
+	
+	OUTPUT MAT_A
+	
+END WHILE
