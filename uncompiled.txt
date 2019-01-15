@@ -1,0 +1,52 @@
+Filename:SIMPLEX
+"ENTER_4X7_MATRIX_IN_MAT:A"Ÿ
+Mat B„Mat AŸ
+Mat Bÿ
+While (Mat A[4,1]<0) Or (Mat A[4,2]<0) Or (Mat A[4,3]<0)Ÿ
+Mat A[4,1]„AŸ
+Mat A[4,2]„BŸ
+Mat A[4,3]„CŸ
+If A<BŸ
+Then 1„XŸ
+Else 2„XŸ
+IfEndŸ
+If X=1Ÿ
+Then If C<AŸ
+Then 3„XŸ
+IfEndŸ
+Else If C<BŸ
+Then 3„XŸ
+IfEndŸ
+IfEndŸ
+Mat A[1,7]¡Mat A[1,X]„AŸ
+Mat A[2,7]¡Mat A[2,X]„BŸ
+Mat A[3,7]¡Mat A[3,X]„CŸ
+0„YŸ
+If A<BŸ
+Then 1„YŸ
+Else 2„YŸ
+IfEndŸ
+If Y=1Ÿ
+Then If C<AŸ
+Then 3„YŸ
+IfEndŸ
+Else If C<BŸ
+Then 3„YŸ
+IfEndŸ
+IfEndŸ
+Mat A[Y,X]„PŸ
+For 1„I To 7 Step 1Ÿ
+Mat A[Y,I]¡P„Mat A[Y,I]Ÿ
+NextŸ
+Mat Aÿ
+For 1„I To 4 Step 1Ÿ
+If (I=Y)Ÿ
+Then I+1„IŸ
+IfEndŸ
+-Mat A[I,X]„QŸ
+For 1„J To 7 Step 1Ÿ
+Mat A[I,J]+Q¿Mat A[Y,J]„Mat A[I,J]Ÿ
+NextŸ
+NextŸ
+Mat Aÿ
+WhileEndŸ
